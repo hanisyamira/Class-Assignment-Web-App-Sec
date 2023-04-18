@@ -1,4 +1,28 @@
+<style>
+    body {
+      background-color: lightblue;
+    }
+h1 {text-align: center;}
+h2 {text-align: center;}
+p {text-align: center;}
+div {text-align: center;}
+    </style>
 <?php
+
+session_start();
+
+
+echo $_SESSION['name']; 
+echo date('Y m d H:i:s', $_SESSION['time']);
+echo "<br>session_id(): ".session_id(); 
+
+echo '<br /><a href="register.php">register</a>';
+session_unset(); 
+session_destroy(); 
+session_write_close(); 
+setcookie(session_name(),'',0,'/'); 
+session_regenerate_id(true); 
+
 // Define regular expressions for input validation
 $nameRegex = "/^[A-Za-z ]+$/";
 $matricnoRegex = "/^[A-Za-z0-9]+$/";
