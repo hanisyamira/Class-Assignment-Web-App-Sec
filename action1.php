@@ -9,6 +9,7 @@ div {text-align: center;}
     </style>
 <?php
 
+
 session_start();
 
 
@@ -22,6 +23,10 @@ session_destroy();
 session_write_close(); 
 setcookie(session_name(),'',0,'/'); 
 session_regenerate_id(true); 
+
+$input = "<script>alert('XSS');</script>";
+$output = htmlspecialchars($input, ENT_QUOTES, 'UTF-8');
+echo $output;
 
 // Define regular expressions for input validation
 $nameRegex = "/^[A-Za-z ]+$/";
