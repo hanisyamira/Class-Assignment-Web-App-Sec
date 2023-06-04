@@ -1,14 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+	<style>
+		body {
+		  background-color: lightblue;
+		}
+	h2 {text-align: center;}
+	p {text-align: center;}
+	div {text-align: center;}
+		</style>
 	<meta charset="UTF-8">
-	<title>Student Details Form</title>
-	<link rel="stylesheet" href="css/style.css">
-	<script src="js/validation.js"></script>
+	<title>Student Details Form</title> 
 </head>
+
+<form action="action1.php" method="POST">
+	<input type="hidden" name="csrf_token" value="<?php echo $_SESSION['csrf_token']; ?>">
+	<!-- Other form fields -->
+	<input type="submit" value="Submit">
+  </form>
+  
+<meta http-equiv="Content-Security-Policy"
+	content="default-src 'self'; img-src https://*; child-src'none';"/>
 <body>
-	<h2>A. Student Details</h2>
-	<form action="action1.php" method="POST" onsubmit="return validateForm()">
+	<h2>Student Details</h2>
+	<form action="action1.php" method="POST">
+		<input type="hidden" name="csrf_token" value="<?php echo $_SESSION['csrf_token']; ?>" 
+		action="action1.php" method="POST" onsubmit="return validateForm()">
 		<div class="form-group">
 			<label for="name">Name (Legal/Official) :</label>
 			<input type="text" id="name" name="name" pattern="[A-Za-z ]+" required>
